@@ -1,0 +1,35 @@
+滴滴数据处理程序preprocess.py:
+
+get_dis(sec, x, y)函数：获取某个交叉口sec到(x,y)的距离
+
+traj_sort(traj_path)函数：将所有数据按日期和轨迹划分，traj_path是数据文件路径
+
+cross_data(sec,dis_range)函数：找到在交叉口sec的影响范围内所有轨迹,dis_range表示交叉口影响范围，生成如7_sec.txt的文件
+
+cal_period(date,t1,t2,period)函数：根据给定的日期date和周期长度period,计算t2和t1相差的周期数
+
+seperate(date_pre,time_range,period,sec_data,sec)函数：根据选定的交叉口和日期，在时间范围time_range内根据周期长度period划分轨迹，得到如2017-05-04_cross7的文件夹
+
+turn_7(x1, y1, x2, y2, sec,angle_thre)函数：确定(x1,y1)经过交叉口sec到达(x2,y2)的进入方向和转向，angle_thre为向量夹角阈值
+
+turn_sep(file_path,sec,dir_path,angle_thre)函数：file_path是如2017-05-04_cross7的文件夹，dir_path表示数据最多的某时段生成的文件夹路径如'2017-05-04_cross7/7_turn/'，cross7表示第七个交叉口，7_turn表示第７个时段的转向信息．
+
+cal_seconds(time)函数：计算某时刻的秒数
+
+show_st(file_path,time_range,period_num)函数：把某个具体的入口和转向信息文件如north-left.txt转化成s-t图.
+
+参数设置在299行下面：
+data_path表示轨迹数据
+sec表示交叉口
+dis_range表示路口影响范围
+period表示时段长度，单位是分钟
+angle_thre表示夹角阈值
+date_pre表示选定的日期
+
+
+3.py可以验证入口和转向的信息是否正确，但只有折线图，没有行驶方向．
+
+
+
+
+
