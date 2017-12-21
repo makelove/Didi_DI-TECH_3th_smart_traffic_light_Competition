@@ -10,3 +10,7 @@
     - 使用SimPy进行模拟
     - [我的笔记](https://github.com/makelove/True_Artificial_Intelligence/tree/master/Python/SimPy)
     - 视频：[【中文字幕】SimPy仿真 Tutorial 视频教程1 - Introduction to SimPy](https://www.bilibili.com/video/av17474579/)
+    
+- 运行
+    - 在当前目录
+        - jupyter notebook
