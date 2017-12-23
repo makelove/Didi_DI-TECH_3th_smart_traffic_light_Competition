@@ -1,7 +1,7 @@
 # Didi_DI-TECH_3th_smart_traffic_light_Competition
 滴滴Di-Tech算法大赛第3届智能信号灯https://ditech.didichuxing.com/
 
-- 注意:
+- 声明!注意:
     - 谁看了我的GitHub仓库,拿奖了奖金必须分我一半!:heart_eyes::thumbsup:
     - 不守信请离开!:thumbsdown::no_good:
 
