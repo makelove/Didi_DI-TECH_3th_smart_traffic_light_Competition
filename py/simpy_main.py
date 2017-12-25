@@ -10,7 +10,7 @@ simpy_main.py:仿真主程序
 # 先模拟一个路口
 
 """
-import simpy, time
+import simpy, time,pickle
 import pandas as pd
 import numpy as np
 from collections import deque
@@ -22,10 +22,33 @@ from config import *
 
 
 def setup():
-    fpath = '../比赛/轨迹数据.txt'
-    df0 = pd.read_csv(fpath)
-    df = df0.sort_values(by='time')
-    df2 = df[df['vehicle-id'] == 'f3bc6bd1462edd25f7ae844143e8f65d']  # 某辆车
+    global df
+    # fpath = '../比赛/轨迹数据.txt'
+    # df0 = pd.read_csv(fpath)
+    # df = df0.sort_values(by='time')
+    # time_min = df['time'].min()
+    # df['time2'] = df['time'] - time_min
+
+    with open('df', 'rb') as f:
+        df = pickle.load(f)
+
+    # df2 = df[df['vehicle-id'] == 'f3bc6bd1462edd25f7ae844143e8f65d']  # 某辆车
+
+
+def car_driver(env):
+    car_set = set()
+
+    dft = df[df['time2'] == env.now]
+    # df 遍历
+    for ix, row in dft.iterrows():
+        vehicle_id = row['vehicle-id']#.value
+        if vehicle_id not in car_set:
+            car_set.add(vehicle_id)
+
+            # df2 = df[df['vehicle-id'] == vehicle_id]  # 某辆车
+            print(env.now, f'\t\t\t车辆{vehicle_id}:上路')
+
+    yield env.timeout(1)  # 以1秒为单位
 
 
 def Cross(index, env):
@@ -44,21 +67,14 @@ def Cross(index, env):
 
         queue.append(phase_tmp)
 
-    # 信号灯,变换
-    # while True:
-    #     print("Light turned GRN绿 at t= " + str(env.now))
-    #     yield env.timeout(30)
-    #     print("Light turned YEL黄 at t= " + str(env.now))
-    #     yield env.timeout(5)
-    #     print("Light turned RED红 at t= " + str(env.now))
-    #     yield env.timeout(20)
-
     # 8个队列
 
     pass
 
 
 if __name__ == '__main__':
+    setup()
+
     # 初始化并开始仿真
     print('十字路口,开始仿真')
     # 创建一个环境并开始仿真
@@ -70,6 +86,9 @@ if __name__ == '__main__':
         env.process(Cross(i, env))
     # env.process(Cross(6, env))#第6个交叉口
 
+    # 车辆
+    env.process(car_driver(env))
+
     # 开始执行!
-    # env.run(until=420)
-    env.run(until=1130389)#最后的时间点
+    env.run(until=10000)  # 测试
+    # env.run(until=1130389)#最后的时间点
