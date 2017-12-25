@@ -37,18 +37,18 @@ def setup():
 
 def car_driver(env):
     car_set = set()
+    while True:
+        dft = df[df['time2'] == env.now]
+        # df 遍历
+        for ix, row in dft.iterrows():
+            vehicle_id = row['vehicle-id']#.value
+            if vehicle_id not in car_set:
+                car_set.add(vehicle_id)
 
-    dft = df[df['time2'] == env.now]
-    # df 遍历
-    for ix, row in dft.iterrows():
-        vehicle_id = row['vehicle-id']#.value
-        if vehicle_id not in car_set:
-            car_set.add(vehicle_id)
+                # df2 = df[df['vehicle-id'] == vehicle_id]  # 某辆车
+                print(env.now, f'\t\t\t车辆{vehicle_id}:上路')
 
-            # df2 = df[df['vehicle-id'] == vehicle_id]  # 某辆车
-            print(env.now, f'\t\t\t车辆{vehicle_id}:上路')
-
-    yield env.timeout(1)  # 以1秒为单位
+        yield env.timeout(1)  # 以1秒为单位
 
 
 def Cross(index, env):
@@ -90,5 +90,5 @@ if __name__ == '__main__':
     env.process(car_driver(env))
 
     # 开始执行!
-    env.run(until=10000)  # 测试
+    env.run(until=1000)  # 测试
     # env.run(until=1130389)#最后的时间点
