@@ -19,14 +19,22 @@ cross_cord = {'1': {'x': 521677, 'y': 58109},
               }
 
 # 行驶方向
-NS北南 = 0
-NE北东 = 1
-EW东西 = 2
-ES东南 = 3
-SN南北 = 4
-SW南西 = 5
-WE西东 = 6
-WN西北 = 7
+# NS北南 = 0
+# NE北东 = 1
+# EW东西 = 2
+# ES东南 = 3
+# SN南北 = 4
+# SW南西 = 5
+# WE西东 = 6
+# WN西北 = 7
+NS北南 = 'NS北南'
+NE北东 = 'NE北东'
+EW东西 = 'EW东西'
+ES东南 = 'ES东南'
+SN南北 = 'SN南北'
+SW南西 = 'SW南西'
+WE西东 = 'WE西东'
+WN西北 = 'WN西北'
 # 发动机=3
 # print(NS北南,SN南北,SW南西,发动机)#可以用中文
 
@@ -63,26 +71,27 @@ cross3 = [{'phase': phase_双向左转_南北, 'time': 28, 'min': 10},
           {'phase': phase_双向直行_南北, 'time': 134, 'min': 35},
           {'phase': phase_双向直行_左转_东西, 'time': 38, 'min': 35}
           ]
-
 cross4 = [{'phase': phase_双向左转_南北, 'time': 34, 'min': 10},
           {'phase': phase_双向直行_南北, 'time': 75, 'min': 35},
           {'phase': phase_双向左转_东西, 'time': 31, 'min': 10},
           {'phase': phase_单向直行_左转_西, 'time': 19, 'min': 8},
           {'phase': phase_双向直行_东西, 'time': 41, 'min': 35}
           ]
-
 cross5 = [{'phase': phase_双向左转_南北, 'time': 48, 'min': 10},
           {'phase': phase_双向直行_南北, 'time': 89, 'min': 35},
           {'phase': phase_双向直行_左转_东西, 'time': 63, 'min': 35}
           ]
-
 cross6 = [{'phase': phase_双向左转_南北, 'time': 35, 'min': 10},
           {'phase': phase_双向直行_南北, 'time': 67, 'min': 35},
           {'phase': phase_双向左转_东西, 'time': 52, 'min': 10},
           {'phase': phase_双向直行_东西, 'time': 46, 'min': 35}
           ]
-
 cross7 = [{'phase': phase_双向左转_南北, 'time': 30, 'min': 10},
           {'phase': phase_双向直行_南北, 'time': 96, 'min': 35},
           {'phase': phase_双向直行_左转_东西, 'time': 74, 'min': 35}
           ]
+corss_list = [cross1, cross2, cross3, cross4, cross5, cross6, cross7]
+
+# 时间
+sim_start_time = 1493852410
+sim_end_time = 1494982799
