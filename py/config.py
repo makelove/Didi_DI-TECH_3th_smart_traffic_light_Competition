@@ -95,3 +95,5 @@ corss_list = [cross1, cross2, cross3, cross4, cross5, cross6, cross7]
 # 时间
 sim_start_time = 1493852410
 sim_end_time = 1494982799
+
+#手动命名,十字路口-汽车-排队-队列

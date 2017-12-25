@@ -10,7 +10,7 @@ simpy_main.py:仿真主程序
 # 先模拟一个路口
 
 """
-import simpy, time,pickle
+import simpy, time, pickle
 import pandas as pd
 import numpy as np
 from collections import deque
@@ -19,6 +19,7 @@ from collections import deque
 
 
 from config import *
+from Car import Car
 
 
 def setup():
@@ -32,7 +33,7 @@ def setup():
     with open('df', 'rb') as f:
         df = pickle.load(f)
 
-    # df2 = df[df['vehicle-id'] == 'f3bc6bd1462edd25f7ae844143e8f65d']  # 某辆车
+        # df2 = df[df['vehicle-id'] == 'f3bc6bd1462edd25f7ae844143e8f65d']  # 某辆车
 
 
 def car_driver(env):
@@ -41,17 +42,26 @@ def car_driver(env):
         dft = df[df['time2'] == env.now]
         # df 遍历
         for ix, row in dft.iterrows():
-            vehicle_id = row['vehicle-id']#.value
+            vehicle_id = row['vehicle-id']  # .value
             if vehicle_id not in car_set:
                 car_set.add(vehicle_id)
+                # TODO
+                car = Car(vehicle_id)
+                road_car_queue.append(car)  # 加入队列
 
                 # df2 = df[df['vehicle-id'] == vehicle_id]  # 某辆车
                 print(env.now, f'\t\t\t车辆{vehicle_id}:上路')
+                # TODO 加入队列?
+                # TODO 需要提前处理车辆数据,1.路径,2.方向,3.车速
 
         yield env.timeout(1)  # 以1秒为单位
 
 
 def Cross(index, env):
+    # 8个队列
+    global road_car_queue
+    road_car_queue = deque()
+
     cross = corss_list[index - 1]
     queue = deque(cross)
     while True:
@@ -66,10 +76,6 @@ def Cross(index, env):
         yield env.timeout(time0)
 
         queue.append(phase_tmp)
-
-    # 8个队列
-
-    pass
 
 
 if __name__ == '__main__':
