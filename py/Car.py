@@ -11,11 +11,24 @@ Car.py:
 
 class Car:
     def __init__(self):
+
+        self.gps=[x,y]#坐标
+        self.speed=x # 车速
+
+        self.direction=straight or left# 方向,直行,左转
+        #当前坐标
+
+        #下个目标-坐标,十字路口
+        next_gps
+
+        #目的地
+        final_gps
         pass
+    #TODO 轨迹分离,
 
     pass
 
-# GPS
-# 方向,直行,左转
-# 车速
+    def update_gps(self):
+        pass
+
 # 轨迹
