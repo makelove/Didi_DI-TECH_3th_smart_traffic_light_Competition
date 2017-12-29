@@ -15,7 +15,7 @@ class Cross_Car_Queue:
         self.signal=signal #信号灯
         self.length=434#TODO 长度
         self.start=xx#起始
-        self.end=xx#重点
+        self.end=xx#终点
 
 
         #
