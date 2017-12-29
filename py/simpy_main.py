@@ -46,8 +46,8 @@ def car_driver(env):
             if vehicle_id not in car_set:
                 car_set.add(vehicle_id)
                 # TODO
-                car = Car(vehicle_id)
-                road_car_queue.append(car)  # 加入队列
+                # car = Car(vehicle_id)
+                # road_car_queue.append(car)  # 加入队列
 
                 # df2 = df[df['vehicle-id'] == vehicle_id]  # 某辆车
                 print(env.now, f'\t\t\t车辆{vehicle_id}:上路')
